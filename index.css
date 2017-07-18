@@ -1,0 +1,363 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	margin:0 auto;
+	font-family:Verdana, Geneva, sans-serif;
+	width:100%;
+	min-width:1024px;
+	max-width:1980px;
+	position:relative;
+}
+
+#header {
+	margin-left:auto;
+	margin-right:auto;
+}
+
+
+a.home:link, a.home:visited ,.home{
+	text-decoration:none;
+	color:#FFF;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:16px;
+}
+
+
+#backgroundimg{
+	background-image:url(JCU1.jpg);
+	background-repeat:no-repeat;
+	background-position:center;
+	background-size:100%;
+	background-attachment:fixed;
+	width:100%;
+}
+
+#title {
+	height:45px; 
+	line-height:45px;
+	background: linear-gradient(to right bottom, #0000A0, #151B8D);
+	font-size:18px;
+	color:#FFF;
+	font-family:Helvetica, Arial, sans-serif;
+}
+
+
+#description{
+	width:85%;
+	height:auto;
+	position:absolute;
+	background:#F7F7F7;
+	margin-left:7.7%;
+	box-shadow: 0px 5px 10px #888888;
+}
+
+
+#footerdescription{
+	width:60%;
+	background-color:#FFF;
+	font-size: 9px;
+	text-align:left;
+	color:#999;
+	font-family:Verdana, Geneva, sans-serif;
+}
+
+#miniBar {
+	width:100%;	
+	background-color:#151B8D;
+	height:30px;
+	box-shadow: 0px 5px 10px #888888;
+}
+
+#slideimg{
+	width:100%;
+	height:200px;
+	background-color:#FFF;
+	box-shadow: 0px 5px 10px #888888;
+}
+
+#miniFooter {
+	display: block;
+	background-color: #0000A0;
+	height: 5px;
+	margin:0 auto;
+	padding:0px;
+}
+
+#heading1, #heading2, #heading3, #heading4, #heading5,
+#heading6, #heading7, #heading8, #heading9 {
+	height:70px;
+	padding:20px 20px 0px 20px;
+	border-bottom:1px solid grey;
+	text-align:left;
+	font-family:Georgia, "Times New Roman", serif;
+	font-size:20px;
+	color:#151B54;
+	background-color:white;
+}
+
+#bodyPart1, #bodyPart2, #bodyPart3, #bodyPart4, #bodyPart5,
+#bodyPart6, #bodyPart7, #bodyPart8, #bodyPart9{
+	font-family:Helvetica, Arial, sans-serif;
+	font-size:14px;
+	color:#333;
+	text-align:left;
+	padding:15px 20px 0px 20px;
+}
+
+.div1, .div2, .div3, .div4, .div5, .div6, .div7, .div8,.div9
+{
+	border:thin solid grey; 
+	width:30%; 
+	height:250px;
+	position:absolute;
+	box-shadow: 0px 5px 5px #888888;
+}
+
+.div1{
+	left:2.2%;
+	top:7.2%;
+	border-top:5px solid #FF8040;
+}
+
+.div2{
+	left:35.3%;
+	top:7.2%;
+	border-top:5px solid #348017;
+}
+
+.div3{
+	left:68%;
+	top:7.2%;
+	border-top:5px solid #0000A0;
+}
+
+.div4{
+	left:2.2%;
+	top:38.2%;
+	border-top:5px solid #9F000F;
+}
+
+.div5{
+	left:35.3%;
+	top:38.2%;
+	border-top:5px solid #FDD017;
+}
+
+.div6{
+	left:68%;
+	top:38.2%;
+	border-top:5px solid #800080;
+}
+
+.div7{
+	left:2.2%;
+	top:69.2%;
+	border-top:5px solid #26334A;
+}
+
+.div8{
+	left:35.3%;
+	top:69.2%;
+	border-top:5px solid #E4287C;
+}
+
+.div9{
+	left:68%;
+	top:69.2%;
+	border-top:5px solid #96F;
+}
+
+a.formLink:link, a.formLink:visited {
+	text-decoration:none;
+	color:#151B54;
+}
+
+a.formLink:hover{
+	color:#950000;
+}
+
+
+
+.scrollbar::-webkit-scrollbar {
+	height: 18px;
+	width: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb{
+	border-radius: 5px;
+	border: solid 1px #fff;
+	background-color: #c8c8c8;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+	background-color:#999;
+}
+
+.scrollbar::-webkit-scrollbar-button {
+	background-repeat: no-repeat;
+	height:0px;
+}
+
+
+.scrollbar::-webkit-scrollbar-track {
+	background-color: #F5F5F5;
+}
+
+
+/*.......CSS for e-services forms........*/
+
+.Enrolment_Form,
+.Defer_Exam_Form,
+.Cancel_StudentPass_Form,
+.Student_Finances_Form,
+.Student_Particulars_Form,
+.Course_Transfer_Application_Form,
+.Change_Of_Major_Form{
+
+background: -webkit-gradient(linear, bottom, left 175px, from(#CCCCCC), to(#EEEEEE));
+background: -moz-linear-gradient(bottom, #CCCCCC, #EEEEEE 175px);
+margin:auto;
+position:relative;
+width:auto;
+font-family: Verdana, Geneva, sans-serif;
+font-size: 14px;
+font-style: normal;
+font-weight: normal;
+color: #000000;
+text-decoration: none;
+
+padding:10px;
+border: 1px solid #999;
+
+-webkit-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+-moz-box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+
+}
+
+select {
+	width:200px;
+}
+
+legend {
+	font-style:normal;
+	font-size:20px;
+	font-weight:bold;
+	margin-left:3%;
+}
+
+.full_box,
+.half_box,
+.quarter_box,
+.quarter_box1,
+.quarter_box2{
+	box-sizing:border-box;
+	float:left;
+	border:0px solid black;
+}
+
+.box_container{
+	width:100%;
+}
+
+.half_box{
+	width:50%;
+	height:28px;
+	line-height:18px;
+}
+
+.full_box{
+	width:100%;
+	line-height:18px;
+	border-width:0px 0px 10px 0px;
+	border-style:solid;
+	border-color:transparent;	
+}
+
+.quarter_box{
+	width:33%;
+	height:25px;
+}
+
+.quarter_box1{
+	width:20%;
+	height:30px;
+}
+
+.quarter_box2{
+	width:80%;
+	height:30px;
+}
+
+
+#enquiry1, #enquiry2 {
+	width:100%; 
+	height:40px; 
+	border-bottom:1px solid #C1C1C1;
+	line-height:40px; 
+	color:#333; 
+	font-size:12px;
+}
+
+#message {
+	width:99.4%; 
+	height:775px;
+	background-color:#F6F6F6;
+	border:0px;
+}
+
+.enquiry_input {
+	border:0px; 
+	line-height:25px; 
+	font-family:Verdana, Geneva, sans-serif;
+	width:90%;
+}
+
+#send_button{
+	width:99.8%; 
+	height:42px;  
+	line-height:40px; 
+	color:#333; 
+	font-size:12px;
+	margin-left:20pz;
+	background-color:#CCC;
+	border:1px solid #C1C1C1;
+}
+	
+/*......CSS for login page.....*/
+
+#loginheader {
+	width:75%;
+	margin-left:auto;
+	margin-right:auto;
+	background-color:#33389d;
+}
+
+
+#login {
+	height:40px; 
+	background-color:#33389d; 
+	color:#FFF; 
+	padding:15px 0px 0px 10px; 
+	font-size:17px;
+	border-top-left-radius:10px;
+	border-top-right-radius:10px;
+}
+
+#login_box {
+	width: 500px;
+	height:300px;
+	margin-top:100px;
+	margin-left:auto;
+	margin-right:auto;
+	border-radius: 10px;
+	border:1px solid grey;
+	background-color:#fff;
+}
+
+#login_table{
+	width:100%;
+	padding-top:40px;
+	font-size:14px;
+}

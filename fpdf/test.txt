@@ -1,0 +1,59 @@
+<?php
+$pdf = new FPDF();
+$pdf->open();
+$pdf->AddPage();
+$pdf->SetAutoPageBreak(false);
+$pdf->SetFillColor(0, 0, 0); //black
+$pdf->SetDrawColor(0, 0, 0); //black
+ 
+//header 1
+$pdf->setXY(10, 20);
+//Set the font you want. To add a font look at tutorial 7 on fpdf.org
+$pdf->setFont("times","B","18");
+$pdf->Cell(190, 20, "PDF Output Header", 1, 0, "C", 1);
+ 
+//header 2
+$pdf->setXY(10, 40);
+$pdf->setFont("times","B","16");
+$pdf->Cell(190, 20, "Sub-heading 1", 1, 0, "C", 1);
+
+//header 3
+$pdf->setXY(10, 60);
+$pdf->setFont("times","B","14");
+$pdf->Cell(190, 20, "Sub-heading 1", 1, 0, "C", 1);
+ 
+//table header
+$pdf->SetFillColor(170, 170, 170); //gray
+$pdf->setFont("times","B","12");
+$pdf->setXY(10, 80);
+$pdf->Cell(80, 10, "Database Field 1", 1, 0, "C", 1);
+$pdf->Cell(60, 10, "Database Field 2", 1, 0, "C", 1);
+$pdf->Cell(25, 10, "Database Field 3", 1, 0, "C", 1);
+$pdf->Cell(25, 10, "Database Field 4", 1, 0, "C", 1);
+
+//gegevens van database
+$y = $pdf->GetY();
+$x = 10;
+$pdf->setXY($x, $y);
+ 
+$sql = ...
+query ...
+while (row ...)
+{
+    	$pdf->Cell(80, 10, $row..., 1);
+	$pdf->Cell(60, 10, $row..., 1);
+	$pdf->Cell(25, 10, $row..., 1);
+	$pdf->Cell(25, 10, $row..., 1);
+	
+	$y += 10;
+	
+	if ($y > 180)
+	{
+		$pdf->AddPage();
+		$y = 20;
+	}
+	
+	$pdf->setXY($x, $y);
+}
+ 
+$pdf->Output();

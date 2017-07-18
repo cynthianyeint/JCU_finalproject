@@ -1,0 +1,403 @@
+<?php
+//Creating connection
+$con = mysql_connect("localhost","root",""); 
+if (!$con)
+  {
+  echo "Failed to connect to MySQL: " . mysql_error() . "<br>";
+ }
+ 
+ //Creating database
+$sql="CREATE DATABASE jcu_db";
+if (mysql_query($sql,$con))
+  {
+  echo "Database created successfully.<br>";
+  }
+else
+  {
+  echo "Error creating database: " . mysql_error($con) . "<br>";
+  }
+  
+//selecting database
+  $sql = mysql_select_db ('jcu_db');
+  
+// Creating students table(login)
+
+$sql="CREATE TABLE students(
+StudentNumber INT(10) NOT NULL,
+FirstName CHAR(30) NOT NULL,
+LastName CHAR(30) NOT NULL,
+UserName CHAR (30) NOT NULL,
+JCUEmail CHAR (30)CHARACTER SET utf8 NOT NULL,
+Password CHAR(30) CHARACTER SET utf8 NOT NULL,
+PRIMARY KEY (StudentNumber))";
+if (mysql_query($sql,$con))
+  {
+  echo "Students Table created successfully.<br>";
+  
+  }
+else
+  {
+  echo "Error creating table: " . mysql_error($con) . "<br>";
+  }
+  
+//Inserting dump data into students table
+$sql = "INSERT INTO students (`StudentNumber`,`FirstName`, `LastName`, `UserName`, `JCUEmail`,`Password`) VALUES
+('12735860','Nyeint Nyeint Khin', '', 'jc246817', 'nyeintnyeintkhin@my.jcu.edu.au','123'),
+('12735861','Darren', 'Chow Fei', 'jc249346', 'darren@my.jcu.edu.au','123'),
+('12735862','Zay Yar Tun', '', 'jc249157', 'zayyartun@my.jcu.edu.au','123')";
+if (mysql_query($sql,$con))
+  {
+  echo "Dump data inserted into 'Students' table successfully.<br>";
+  }
+else
+  {
+  echo "Inserting Data Error: " . mysql_error($con) . "<br>";
+
+  }
+//Creating admin table
+$sql = "CREATE TABLE admin (
+Admin_ID INT NOT NULL AUTO_INCREMENT,
+UserName CHAR (30) NOT NULL,
+Email CHAR (30) CHARACTER SET utf8 NOT NULL,
+Password CHAR (30) CHARACTER SET utf8 NOT NULL,
+PRIMARY KEY (Admin_ID))";
+if (mysql_query($sql,$con))
+  {
+  echo "Admin Table created successfully.<br>";
+  
+  }
+else
+  {
+  echo "Error creating table: " . mysql_error($con) . "<br>";
+  }
+//Inserting dump data into admin table
+$sql = "INSERT INTO admin(`UserName`, `Email`,`Password`) VALUES
+('Student Service','student_service@gmail.com','123')";
+if (mysql_query($sql,$con))
+  {
+  echo "Dump data inserted into 'Admin' table successfully.<br>";
+  }
+else
+  {
+  echo "Inserting Data Error: " . mysql_error($con) . "<br>";
+
+  }
+//Creating Enrolment form table
+
+$sql = "CREATE TABLE enrolments(
+Enroll_ID INT NOT NULL AUTO_INCREMENT,
+DateTime TIMESTAMP,
+StudentNumber INT NOT NULL,
+Title VARCHAR (15) NOT NULL,
+Nationality CHAR(30) NOT NULL,
+FamilyName CHAR(50) NOT NULL,
+GivenName CHAR(30)NOT NULL,
+JCUEmail CHAR (30) CHARACTER SET utf8 NOT NULL,
+MobilePhone INT NOT NULL,
+HomePhone INT NOT NULL,
+Course CHAR(30) NOT NULL,
+Major CHAR(30) NOT NULL,
+AdvStanding CHAR(30) NOT NULL,
+TrimesterLeave CHAR(30) NOT NULL,
+StudyMode CHAR(30) NOT NULL,
+StudyPeriod CHAR(30) NOT NULL,
+Year INT NOT NULL,
+SubEnrol1 CHAR(30) NOT NULL,
+SubWithdraw1 CHAR(30) NOT NULL,
+Sub1AttendanceMode CHAR(30) NOT NULL,
+SubEnrol2 CHAR(30) NOT NULL,
+SubWithdraw2 CHAR(30) NOT NULL,
+Sub2AttendanceMode CHAR(30) NOT NULL,
+SubEnrol3 CHAR(30) NOT NULL,
+SubWithdraw3 CHAR(30) NOT NULL,
+Sub3AttendanceMode CHAR(30) NOT NULL,
+SubEnrol4 CHAR(30) NOT NULL,
+SubWithdraw4 CHAR(30) NOT NULL,
+Sub4AttendanceMode CHAR(30) NOT NULL,
+SubEnrol5 CHAR(30) NOT NULL,
+SubWithdraw5 CHAR(30) NOT NULL,
+Sub5AttendanceMode CHAR(30) NOT NULL,
+PRIMARY KEY (Enroll_ID),
+FOREIGN KEY (StudentNumber) REFERENCES students (StudentNumber)
+)";
+
+if (mysql_query($sql,$con))
+  {
+  echo "Enrolment Table created successfully";
+  echo "<br>";
+  }
+else
+  {
+  echo "Error creating table: " . mysql_error($con) . "<br>";
+  }
+  
+  //Creating Defer Exam form table
+
+$sql = "CREATE TABLE defer_exam(
+Defer_ID INT NOT NULL AUTO_INCREMENT,
+DateTime TIMESTAMP,
+StudentNumber INT NOT NULL,
+Title VARCHAR (15) NOT NULL,
+FamilyName CHAR(30) NOT NULL,
+GivenName CHAR(30)NOT NULL,
+JCUEmail CHAR(30) CHARACTER SET utf8 NOT NULL,
+Email CHAR(30) CHARACTER SET utf8 NOT NULL,
+MobilePhone INT NOT NULL,
+HomePhone INT NOT NULL,
+Course CHAR(30) NOT NULL,
+StudyMode CHAR(30) NOT NULL,
+DefermentType CHAR(30) NOT NULL,
+StudyPeriod CHAR(30) NOT NULL,
+Year INT NOT NULL,
+Subject1 CHAR(30) NOT NULL,
+ExamDate1 DATE NOT NULL,
+Lecturer1 CHAR(30) NOT NULL,
+Subject2 CHAR(30) NOT NULL,
+ExamDate2 DATE NOT NULL,
+Lecturer2 CHAR(30) NOT NULL,
+Subject3 CHAR(30) NOT NULL,
+ExamDate3 DATE NOT NULL,
+Lecturer3 CHAR(30) NOT NULL,
+FileName VarChar(255) Not Null Default 'Untitled.txt',
+FileType VarChar(50) Not Null Default 'text/plain',
+FileSize BigInt Unsigned Not Null Default 0,
+FileData MediumBlob Not Null,
+PRIMARY KEY (DEFER_ID),
+FOREIGN KEY (StudentNumber) REFERENCES students (StudentNumber)
+)";
+
+if (mysql_query($sql,$con))
+  {
+  echo "Defer Exam Table created successfully";
+  echo "<br>";
+  }
+else
+  {
+  echo "Error creating table: " . mysql_error($con) . "<br>";
+  }
+  
+  //Creating Cancel Student Pass form table
+
+$sql = "CREATE TABLE cancel_studentpass(
+Cancel_ID INT NOT NULL AUTO_INCREMENT,
+DateTime TIMESTAMP,
+StudentNumber INT NOT NULL,
+FinNumber INT NOT NULL,
+Title VARCHAR (15) NOT NULL,
+Nationality CHAR(30) NOT NULL,
+FamilyName CHAR(30) NOT NULL,
+GivenName CHAR(30)NOT NULL,
+JCUEmail CHAR(30) CHARACTER SET utf8 NOT NULL,
+MobilePhone INT NOT NULL,
+HomePhone INT NOT NULL,
+Course CHAR(30) NOT NULL,
+PassExpiryDate DATE NOT NULL,
+Reason CHAR (30) NOT NULL,
+LeaveDate DATE NOT NULL,
+FileName VarChar(255) Not Null Default 'Untitled.txt',
+FileType VarChar(50) Not Null Default 'text/plain',
+FileSize BigInt Unsigned Not Null Default 0,
+FileData MediumBlob Not Null,
+PRIMARY KEY (Cancel_ID),
+FOREIGN KEY (StudentNumber) REFERENCES students (StudentNumber)
+)";
+
+if (mysql_query($sql,$con))
+  {
+  echo "Cancel Student Pass Table created successfully";
+  echo "<br>";
+  }
+else
+  {
+  echo "Error creating table: " . mysql_error($con) . "<br>";
+  }
+
+  //Creating Cancel Student Finances form table
+
+$sql = "CREATE TABLE student_finances(
+Finance_ID INT NOT NULL AUTO_INCREMENT,
+DateTime TIMESTAMP,
+StudentNumber INT NOT NULL,
+FinNumber INT NOT NULL,
+Title VARCHAR (15) NOT NULL,
+FamilyName CHAR(30) NOT NULL,
+GivenName CHAR(30)NOT NULL,
+JCUEmail CHAR(30) CHARACTER SET utf8 NOT NULL,
+MobilePhone INT NOT NULL,
+HomePhone INT NOT NULL,
+Passport CHAR(30) NOT NULL,
+Course CHAR(30) NOT NULL,
+StudyMode CHAR(30) NOT NULL,
+RequestType VARCHAR(40) NOT NULL,
+PeriodExtension VARCHAR(100) NOT NULL,
+ExtensionReason VARCHAR (100) NOT NULL,
+WaivingLateReason VARCHAR(100) NOT NULL,
+RefundReason VARCHAR (100) NOT NULL,
+OthersReason VARCHAR(100) NOT NULL,
+PRIMARY KEY (Finance_ID),
+FOREIGN KEY (StudentNumber) REFERENCES students (StudentNumber)
+)";
+
+if (mysql_query($sql,$con))
+  {
+  echo "Student finances Table created successfully";
+  echo "<br>";
+  }
+else
+  {
+  echo "Error creating table: " . mysql_error($con);
+  echo "<br>";
+  }
+  
+  //Creating Cancel Student Particulars form table
+
+$sql = "CREATE TABLE student_particulars(
+Particulars_ID INT NOT NULL AUTO_INCREMENT,
+DateTime TIMESTAMP,
+StudentNumber INT NOT NULL,
+FinNumber INT NOT NULL,
+StudentPassIssueDate DATE NOT NULL,
+Title VARCHAR (15) NOT NULL,
+FamilyName CHAR(30) NOT NULL,
+GivenName CHAR(30)NOT NULL,
+Email CHAR(30) CHARACTER SET utf8 NOT NULL,
+Course CHAR(30) NOT NULL,
+StudyMode CHAR(30) NOT NULL,
+Address CHAR (80) NOT NULL,
+PostalCode VARCHAR (30) NOT NULL,
+MobilePhone INT NOT NULL,
+EmergencyContact CHAR (30) NOT NULL,
+Relationship VARCHAR(30) NOT NULL,
+ContactAddress CHAR (80) NOT NULL,
+ContactPostalCode VARCHAR (30) NOT NULL,
+ContactPhone INT NOT NULL,
+NewTitle VARCHAR (15) NOT NULL,
+NewFamilyName CHAR(30) NOT NULL,
+NewGivenName CHAR(30)NOT NULL,
+PRIMARY KEY (Particulars_ID),
+FOREIGN KEY (StudentNumber) REFERENCES students (StudentNumber)
+)";
+
+if (mysql_query($sql,$con))
+  {
+  echo "Student particulars table created successfully";
+  echo "<br>";
+  }
+else
+  {
+  echo "Error creating table: " . mysql_error($con);
+  echo "<br>";
+  }
+  
+  //Creating Cancel Change Majors form table
+$sql = "CREATE TABLE change_majors(
+Major_ID INT NOT NULL AUTO_INCREMENT,
+DateTime TIMESTAMP,
+StudentNumber INT NOT NULL,
+Title VARCHAR (15) NOT NULL,
+Nationality CHAR(30) NOT NULL,
+FamilyName CHAR(30) NOT NULL,
+GivenName CHAR(30)NOT NULL,
+JCUEmail CHAR(30) CHARACTER SET utf8 NOT NULL,
+MobilePhone INT NOT NULL,
+HomePhone INT NOT NULL,
+Course CHAR(30) NOT NULL,
+Major CHAR(30) NOT NULL,
+AdvStanding CHAR(30) NOT NULL,
+NewCourse CHAR(30) NOT NULL,
+NewMajor CHAR (30) NOT NULL,
+StudyPeriod CHAR(30) NOT NULL,
+Year INT NOT NULL,
+PRIMARY KEY (Major_ID),
+FOREIGN KEY (StudentNumber) REFERENCES students (StudentNumber)
+)";
+
+if (mysql_query($sql,$con))
+  {
+  echo "Change of majors table created successfully";
+  echo "<br>";
+  }
+else
+  {
+  echo "Error creating table: " . mysql_error($con);
+  echo "<br>";
+  }
+  //Creating Cancel Course Transfer Applications form table
+$sql = "CREATE TABLE course_transfer_application(
+Application_ID INT NOT NULL AUTO_INCREMENT,
+DateTime TIMESTAMP,
+StudentNumber INT NOT NULL,
+Title VARCHAR (15) NOT NULL,
+Nationality CHAR (30) NOT NULL,
+FamilyName CHAR (30) NOT NULL,
+GivenName CHAR (30) NOT NULL,
+JCUEmail CHAR(30) CHARACTER SET utf8 NOT NULL,
+MobilePhone INT NOT NULL,
+HomePhone INT NOT NULL,
+CurrentCourseCode CHAR(30) NOT NULL,
+CurrentCourseTitle CHAR(30) NOT NULL,
+CurrentMajor CHAR(30) NOT NULL,
+ShowCase CHAR(15) NOT NULL,
+Reason CHAR(50) NOT NULL,
+ProposedCourseCode CHAR(30) NOT NULL,
+ProposedCourseTitle CHAR(30) NOT NULL,
+ProposedMajor CHAR(30) NOT NULL,
+StudyPeriod CHAR(30) NOT NULL,
+Year CHAR(30) NOT NULL,
+StudyMode CHAR(30) NOT NULL,
+PRIMARY KEY (Application_ID),
+FOREIGN KEY (StudentNumber) REFERENCES students (StudentNumber)
+)";
+
+if (mysql_query($sql,$con))
+  {
+  echo "Course Transfer Application table created successfully";
+  echo "<br>";
+  }
+else
+  {
+  echo "Error creating table: " . mysql_error($con);
+  echo "<br>";
+  }
+ //Creating enquiry form table
+$sql = "CREATE TABLE enquiry(
+Enquiry_ID INT NOT NULL AUTO_INCREMENT,
+DateTime TIMESTAMP,
+EnquirySubject CHAR (50) NOT NULL,
+EnquiryIssues CHAR(30) NOT NULL,
+EnquiryMessage CHAR(100) NOT NULL,
+StudentNumber INT NOT NULL,
+JCUEmail CHAR(30) CHARACTER SET utf8 NOT NULL,
+PRIMARY KEY (Enquiry_ID),
+FOREIGN KEY (StudentNumber) REFERENCES students (StudentNumber)
+)";
+
+if (mysql_query($sql,$con))
+  {
+  echo "Enquiry table created successfully";
+  echo "<br>";
+  }
+else
+  {
+  echo "Error creating table: " . mysql_error($con);
+  echo "<br>";
+  }
+  
+  
+  
+  
+  // Creating teststudent table
+$sql="CREATE TABLE test(
+FamilyName VARBINARY(100) NOT NULL,
+PRIMARY KEY (FamilyName))";
+if (mysql_query($sql,$con))
+  {
+  echo "Students Table created successfully.<br>";
+  
+  }
+else
+  {
+  echo "Error creating table: " . mysql_error($con) . "<br>";
+  }
+
+?>
